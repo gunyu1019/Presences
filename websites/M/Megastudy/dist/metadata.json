@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.premid.app/metadata/1.4",
+  "service": "메가스터디",
+  "author": {
+    "name": "건유1019",
+    "id": "340373909339635725"
+  },
+  "category": "videos",
+  "logo": "https://i.imgur.com/diiQz5x.jpg",
+  "thumbnail": "https://i.imgur.com/BQdfSti.png",
+  "version": "1.0.0",
+  "color": "#007af3",
+  "tags": [
+    "learning",
+    "korean",
+    "study"
+  ],
+  "altnames": [
+    "Megastudy"
+  ],
+  "url": "www.megastudy.net",
+  "description": {
+    "ko": "한국 대학입시 인터넷강의 사이트",
+    "en": "Korean University Career Internet Lecture Service",
+    "nl": "Internetlezingendienst voor Koreaanse universiteitscarrière"
+  },
+  "iframe": true
+}
