@@ -3,11 +3,12 @@ const presence = new Presence({
 });
 
 let VideoMedia: MediaData = {
-  duration: 0,
-  currentTime: 0,
-  paused: true,
-  ended: false
-}, playback: boolean;
+    duration: 0,
+    currentTime: 0,
+    paused: true,
+    ended: false
+  },
+  playback: boolean;
 
 type MediaData = {
   duration: number;
@@ -15,7 +16,7 @@ type MediaData = {
   paused: boolean;
   ended: boolean;
   title?: string;
-}
+};
 
 type iFrameData = {
   iframeVideo: {
@@ -25,33 +26,33 @@ type iFrameData = {
     ended: boolean;
     title?: string;
   };
-}
+};
 
 presence.on("iFrameData", async (data: iFrameData) => {
-  playback = (data.iframeVideo?.duration ) !== undefined;
-  if (playback)
-    VideoMedia = data.iframeVideo;
+  playback = data.iframeVideo?.duration !== undefined;
+  if (playback) VideoMedia = data.iframeVideo;
 });
 
 presence.on("UpdateData", async () => {
   const presenceData: PresenceData = {
-    largeImageKey: "logo"
-  }, {location} = window;
+      largeImageKey: "logo"
+    },
+    { location } = window;
   if (location.pathname === "/Player/kollus/player.asp") {
     presenceData.details = document.querySelector("div.txt").textContent;
-    if (VideoMedia.title !== undefined)
-      presenceData.state = VideoMedia.title;
+    if (VideoMedia.title !== undefined) presenceData.state = VideoMedia.title;
 
     const now = Date.now();
-    presenceData.endTimestamp = Math.floor(now / 1000) + VideoMedia.duration - VideoMedia.currentTime;
+    presenceData.endTimestamp =
+      Math.floor(now / 1000) + VideoMedia.duration - VideoMedia.currentTime;
 
     if (VideoMedia.paused) {
       presenceData.smallImageKey = "pause";
       presenceData.smallImageText = "일시 정지";
-    }else if (VideoMedia.ended) {
+    } else if (VideoMedia.ended) {
       presenceData.smallImageKey = "stop";
       presenceData.smallImageText = "시청 완료";
-    }else {
+    } else {
       presenceData.smallImageKey = "play";
       presenceData.smallImageText = "수강 중";
     }
